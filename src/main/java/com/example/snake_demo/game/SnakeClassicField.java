@@ -1,11 +1,9 @@
 package com.example.snake_demo.game;
 
-import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class SnakeClassicField extends SnakeField {
@@ -38,7 +36,7 @@ public class SnakeClassicField extends SnakeField {
     protected void die() {
         System.out.println("You lose");
         frame_updator.stop();
-        showEndField();
+        showGameOverScene();
     }
 
     @Override

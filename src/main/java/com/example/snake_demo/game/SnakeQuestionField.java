@@ -1,6 +1,5 @@
 package com.example.snake_demo.game;
 
-import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.text.Font;
 
@@ -50,7 +49,7 @@ public class SnakeQuestionField extends SnakeField {
     protected void die() {
         System.out.println("You lose");
         frame_updator.stop();
-        showEndField();
+        showGameOverScene();
     }
 
     @Override
@@ -63,7 +62,7 @@ public class SnakeQuestionField extends SnakeField {
             apples.addAll(quiz[++quiz_num].getVars());
         } else {
             frame_updator.stop();
-            showEndField();
+            showGameOverScene();
         }
     }
 

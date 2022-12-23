@@ -10,7 +10,7 @@ public class GameOverController {
     Window window = Window.getWindow();
 
     @FXML
-    private Label resultLabel;
+    private Label resultLabel; //Текст с результатом игры
 
     public void OnExitPressed(ActionEvent actionEvent) {
         Scene menuScene = window.getSceneStack().get("menuScene");

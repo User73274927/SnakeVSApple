@@ -19,12 +19,12 @@ import java.util.List;
 
 public abstract class SnakeField extends Pane {
     public final int scene_size;
-    public final int dots;
-    public final int dot_size;
+    public final int dots; //Кол-во клеток по ширине
+    public final int dot_size; //Размер одной клетки
     protected final Canvas canvas;
 
-    protected final List<Apple> apples;
-    protected Timer frame_updator;
+    protected final List<Apple> apples; //Массив яблок на поле
+    protected Timer frame_updator; //Обновляет кадры
     protected Snake snake;
     private Color color_background = Color.WHITE;
 
@@ -46,9 +46,12 @@ public abstract class SnakeField extends Pane {
         getChildren().add(canvas);
     }
 
+    //Отрисовка и проверки
     protected void paintFrame(GraphicsContext context) {
         paintBackGround(context);
         snake.drawSnake(context, scene_size);
+
+        //Проверить на смерть змейки
         if (isDied()) {
             die();
         }
@@ -57,6 +60,7 @@ public abstract class SnakeField extends Pane {
             apple.drawApple(context);
         }
 
+        //Проверить на съедение яблока змейкой
         for (Apple apple : apples) {
             if (isAppleEat(apple)) {
                 eat(apple);
@@ -65,7 +69,7 @@ public abstract class SnakeField extends Pane {
         }
     }
 
-    protected void showEndField() {
+    protected void showGameOverScene() {
         Window window = Window.getWindow();
         frame_updator.stop();
         Platform.runLater(() -> {
@@ -99,6 +103,7 @@ public abstract class SnakeField extends Pane {
         return false;
     }
 
+    //Клавиши управления
     public void keyPressed(KeyEvent e) {
         switch (e.getCode()) {
             case W -> {
@@ -122,6 +127,7 @@ public abstract class SnakeField extends Pane {
         }
     }
 
+    //Условие на правильные координаты яблока на поле
     public boolean isOnFreeDot(int x, int y) {
         if (y < 0 && x < 0) {
             return (false);

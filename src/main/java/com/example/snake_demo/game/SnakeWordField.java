@@ -34,7 +34,7 @@ public class SnakeWordField extends SnakeField {
     protected void die() {
         System.out.println("you lose!");
         frame_updator.stop();
-        showEndField();
+        showGameOverScene();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SnakeWordField extends SnakeField {
         if (apples.size() == 0) {
             if (word.equals(player_word)) {
                 frame_updator.stop();
-                showEndField();
+                showGameOverScene();
             } else {
                 snake.restart();
                 setDigitsOnField();
