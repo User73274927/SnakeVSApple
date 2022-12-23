@@ -60,7 +60,7 @@ public class SnakeWordField extends SnakeField {
         return player_word;
     }
 
-    public void setDigitsOnField() {
+    private void setDigitsOnField() {
         Random rd = new Random();
 
         for (char ch : word.toCharArray()) {
