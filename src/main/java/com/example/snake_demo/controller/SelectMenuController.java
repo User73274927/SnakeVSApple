@@ -20,7 +20,7 @@ public class SelectMenuController {
     }
 
     @FXML
-    public void OnPlayWordPressed(ActionEvent actionEvent) {
+    public void OnPlayWord1Pressed(ActionEvent actionEvent) {
         Scene playScene = App.getSnakeWordScene("Hello");
         SnakeField fn = (SnakeField) playScene.getRoot();
         window.setScene(playScene);
@@ -37,4 +37,11 @@ public class SelectMenuController {
         fn.startGame();
     }
 
+    public void OnPlayWord2Pressed(ActionEvent actionEvent) {
+        Scene playScene = App.getSnakeWordScene("할아버지 할머니");
+        SnakeField fn = (SnakeField) playScene.getRoot();
+        window.setScene(playScene);
+        playScene.setOnKeyPressed(fn::keyPressed);
+        fn.startGame();
+    }
 }

@@ -46,7 +46,7 @@ public abstract class SnakeField extends Pane {
         getChildren().add(canvas);
     }
 
-    //Отрисовка и проверки
+    //Отрисовка и проверка
     protected void paintFrame(GraphicsContext context) {
         paintBackGround(context);
         snake.drawSnake(context, scene_size);
@@ -84,16 +84,19 @@ public abstract class SnakeField extends Pane {
         });
     }
 
+    //Закрашивает задний фон
     protected void paintBackGround(GraphicsContext context) {
         context.setFill(color_background);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
+    //проверка съел ли яблоко?
     protected boolean isAppleEat(Apple apple) {
         return (snake.getSnakeX() == apple.getX() &&
                 snake.getSnakeY() == apple.getY());
     }
 
+    //Проверка на смерть змейки
     protected boolean isDied() {
         for (int i = 1; i < snake.getBody().size(); i++)
             if (snake.getBody().get(0).getX() == snake.getBody().get(i).getX() &&

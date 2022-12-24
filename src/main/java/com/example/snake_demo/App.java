@@ -23,16 +23,8 @@ public class App extends Application {
         //Сцены UI
         Scene menuScene = new Scene(menuView.load(), SCREEN_SIZE, SCREEN_SIZE);
 
-        //Сцены игрового процесса
-        Scene snakeWordScene = new Scene(new SnakeWordField(SCREEN_SIZE, DOTS, "Hello!"), SCREEN_SIZE, SCREEN_SIZE);
-        Scene snakeQuestionScene = new Scene(new SnakeQuestionField(SCREEN_SIZE, DOTS), SCREEN_SIZE, SCREEN_SIZE);
-        Scene snakeClassicScene = new Scene(new SnakeClassicField(SCREEN_SIZE, DOTS), SCREEN_SIZE, SCREEN_SIZE);
-
         //Добавление всех сцен в словарь
         window.getSceneStack().put("menuScene", menuScene);
-        window.getSceneStack().put("snakeQuestionScene", snakeQuestionScene);
-        window.getSceneStack().put("snakeWordScene", snakeWordScene);
-        window.getSceneStack().put("snakeClassicScene", snakeClassicScene);
     }
 
     @Override

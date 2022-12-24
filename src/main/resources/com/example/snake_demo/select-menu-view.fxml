@@ -38,6 +38,7 @@
          </image>
       </ImageView>
          <Label text="Составить слово" />
-         <Button text="Играть" onAction="#OnPlayWordPressed"/>
+         <Button text="Играть английский" onAction="#OnPlayWord1Pressed"/>
+         <Button text="Играть корейский" onAction="#OnPlayWord2Pressed"/>
      </VBox>
  </HBox>

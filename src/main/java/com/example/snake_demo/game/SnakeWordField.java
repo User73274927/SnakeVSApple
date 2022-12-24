@@ -16,7 +16,6 @@ public class SnakeWordField extends SnakeField {
         super(screen_size, dots);
         this.word = word;
         question = "";
-        word = "할아버지 할머니 엄마 아빠 오빠 언니";
         player_word = "";
         setDigitsOnField();
     }
@@ -32,9 +31,9 @@ public class SnakeWordField extends SnakeField {
 
     @Override
     protected void die() {
-        System.out.println("you lose!");
-        frame_updator.stop();
-        showGameOverScene();
+        snake.restart();
+        setDigitsOnField();
+        player_word = "";
     }
 
     @Override
@@ -56,7 +55,7 @@ public class SnakeWordField extends SnakeField {
     }
 
     @Override
-    public String getResult() {
+    public String getResult() { //Возврат результата игры
         return player_word;
     }
 
