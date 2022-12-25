@@ -68,8 +68,8 @@ public class Snake {
     public void addBody() {
         Rectangle new_body = new Rectangle();
         new_body.setStroke(color_stroke);
-        new_body.setStrokeWidth(0.8);
         new_body.setFill(color_fill);
+        new_body.setStrokeWidth(0.8);
         body.add(new_body);
     }
 
@@ -109,6 +109,14 @@ public class Snake {
 
     public int getBodySize() {
         return body.size();
+    }
+
+    public void setFill(Color color) {
+        this.color_fill = color;
+    }
+
+    public void setStroke(Color color) {
+        this.color_stroke = color;
     }
 
     public void moveUp(int screen_size) {

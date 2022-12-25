@@ -21,12 +21,15 @@ public abstract class SnakeField extends Pane {
     public final int scene_size;
     public final int dots; //Кол-во клеток по ширине
     public final int dot_size; //Размер одной клетки
-    protected final Canvas canvas;
 
+    protected final Canvas canvas;
     protected final List<Apple> apples; //Массив яблок на поле
     protected Timer frame_updator; //Обновляет кадры
     protected Snake snake;
+
     private Color color_background = Color.WHITE;
+    private Color color_apple_fill = Color.RED;
+    private Color color_apple_stroke = Color.BLACK;
 
     public SnakeField(int scene_size, int dots) {
         this.scene_size = scene_size;
@@ -68,7 +71,6 @@ public abstract class SnakeField extends Pane {
             }
         }
     }
-
     protected void showGameOverScene() {
         Window window = Window.getWindow();
         frame_updator.stop();
@@ -85,18 +87,19 @@ public abstract class SnakeField extends Pane {
     }
 
     //Закрашивает задний фон
+
     protected void paintBackGround(GraphicsContext context) {
         context.setFill(color_background);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
-
     //проверка съел ли яблоко?
+
     protected boolean isAppleEat(Apple apple) {
         return (snake.getSnakeX() == apple.getX() &&
                 snake.getSnakeY() == apple.getY());
     }
-
     //Проверка на смерть змейки
+
     protected boolean isDied() {
         for (int i = 1; i < snake.getBody().size(); i++)
             if (snake.getBody().get(0).getX() == snake.getBody().get(i).getX() &&
@@ -105,8 +108,8 @@ public abstract class SnakeField extends Pane {
             }
         return false;
     }
-
     //Клавиши управления
+
     public void keyPressed(KeyEvent e) {
         switch (e.getCode()) {
             case W -> {
@@ -129,8 +132,8 @@ public abstract class SnakeField extends Pane {
             }
         }
     }
-
     //Условие на правильные координаты яблока на поле
+
     public boolean isOnFreeDot(int x, int y) {
         if (y < 0 && x < 0) {
             return (false);
@@ -146,7 +149,15 @@ public abstract class SnakeField extends Pane {
         return (true);
     }
 
+    //Добавить яблоко в массив apples, но с настройками, заданными игроком
+    public void addDefaultApple(Apple apple) {
+        apple.setColorStroke(color_apple_stroke);
+        apple.setColorFill(color_apple_fill);
+        apples.add(apple);
+    }
+
     public void startGame() {
+        initEnvironment();
         frame_updator.start();
     }
 
@@ -162,10 +173,19 @@ public abstract class SnakeField extends Pane {
         this.color_background = color_background;
     }
 
+    public void setColorAppleFill(Color color_apple_fill) {
+        this.color_apple_fill = color_apple_fill;
+    }
+
+    public void setColorAppleStroke(Color color_apple_stroke) {
+        this.color_apple_stroke = color_apple_stroke;
+    }
+
     public Snake getSnake() {
         return snake;
     }
 
+    protected abstract void initEnvironment();
     protected abstract void die();
     protected abstract void eat(Apple apple);
     public abstract String getResult();

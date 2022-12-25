@@ -43,15 +43,24 @@ public class App extends Application {
     }
 
     public static Scene getSnakeClassicScene() {
-        return new Scene(new SnakeClassicField(SCREEN_SIZE, DOTS), SCREEN_SIZE, SCREEN_SIZE);
+        return new Scene(
+                SnakeBuilder.createSnakeField(new SnakeClassicField(SCREEN_SIZE, DOTS)),
+                SCREEN_SIZE, SCREEN_SIZE
+        );
     }
 
     public static Scene getSnakeQuestionScene() {
-        return new Scene(new SnakeQuestionField(SCREEN_SIZE, DOTS), SCREEN_SIZE, SCREEN_SIZE);
+        return new Scene(
+                SnakeBuilder.createSnakeField(new SnakeQuestionField(SCREEN_SIZE, DOTS)),
+                SCREEN_SIZE, SCREEN_SIZE
+        );
     }
 
     public static Scene getSnakeWordScene(String text) {
-        return new Scene(new SnakeWordField(SCREEN_SIZE, DOTS, text), SCREEN_SIZE, SCREEN_SIZE);
+        return new Scene(
+                SnakeBuilder.createSnakeField(new SnakeWordField(SCREEN_SIZE, DOTS, text)),
+                SCREEN_SIZE, SCREEN_SIZE
+        );
     }
 
     public static void main(String[] args) {

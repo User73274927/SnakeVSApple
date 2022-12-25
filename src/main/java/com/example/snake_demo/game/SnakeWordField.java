@@ -17,7 +17,6 @@ public class SnakeWordField extends SnakeField {
         this.word = word;
         question = "";
         player_word = "";
-        setDigitsOnField();
     }
 
     @Override
@@ -27,6 +26,11 @@ public class SnakeWordField extends SnakeField {
         context.fillText(player_word, dot_size, scene_size - dot_size * 2);
         context.setFont(question_font);
         context.fillText(question, 50, 50);
+    }
+
+    @Override
+    protected void initEnvironment() {
+        setDigitsOnField();
     }
 
     @Override
@@ -73,7 +77,11 @@ public class SnakeWordField extends SnakeField {
             Apple apple = new Apple(dot_size, "" + ch);
             apple.setX(x);
             apple.setY(y);
-            apples.add(apple);
+            addDefaultApple(apple);
         }
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

@@ -13,7 +13,6 @@ public class SnakeClassicField extends SnakeField {
     public SnakeClassicField(int screen_size, int dots) {
         super(screen_size, dots);
         this.score = 0;
-        apples.add(createApple());
     }
 
     @Override
@@ -25,9 +24,14 @@ public class SnakeClassicField extends SnakeField {
     }
 
     @Override
+    protected void initEnvironment() {
+        addDefaultApple(createApple());
+    }
+
+    @Override
     protected void eat(Apple apple) {
         apples.remove(apple);
-        apples.add(createApple());
+        addDefaultApple(createApple());
         snake.addBody();
         score += 10;
     }

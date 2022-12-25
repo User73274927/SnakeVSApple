@@ -35,14 +35,18 @@ public class SnakeQuestionField extends SnakeField {
         quiz[4].setQuestion("Вам понравилась викторина?");
         quiz[4].setVar("Да", true);
         quiz[4].setVar("Нет", true);
-
-        apples.addAll(quiz[quiz_num].getVars());
     }
 
     @Override
     protected void paintFrame(GraphicsContext context) {
         super.paintFrame(context);
         quiz[quiz_num].drawQuestion(context, new Font(dot_size / 2.0), 50 ,50);
+    }
+
+    @Override
+    protected void initEnvironment() {
+        for (Apple apple : quiz[quiz_num].getVars())
+            addDefaultApple(apple);
     }
 
     @Override
@@ -59,7 +63,8 @@ public class SnakeQuestionField extends SnakeField {
             snake.addBody();
         }
         if (quiz_num < quiz.length - 1) {
-            apples.addAll(quiz[++quiz_num].getVars());
+            for (Apple apl : quiz[++quiz_num].getVars())
+                addDefaultApple(apl);
         } else {
             frame_updator.stop();
             showGameOverScene();
